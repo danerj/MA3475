@@ -1,0 +1,117 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{subfig}
+\setlength\parindent{0pt}
+\usepackage{amssymb}
+\setcounter{section}{-1}
+\title{MA 3475 Exam 1 Review Problems}
+
+\begin{document}
+\maketitle
+Find the extremal(s) of the following functionals.
+
+\section*{Problem 1}
+$$J[y] = \int_a^b \left(3x + \sqrt{y'(x)}\right) \; dx $$
+
+\begin{align*}
+F(x,y,y') &= 3x + \sqrt{y'} \\
+F_y &= 0, \quad F_{y'} = \frac{1}{2\sqrt{y'}} \\
+0 &= F_y - \frac{d}{dx}F_{y'} = 0 - \frac{d}{dx}\left[\frac{1}{2\sqrt{y'}}\right] \quad \text{(Euler-Lagrange)} \\
+\implies c &= \frac{1}{2\sqrt{y'}} \\
+y'(x) &= 4c^2 =: c_1  \\
+y(x) &= \int_a^b y'(x) \; dx = c_1x + c_2
+\end{align*}
+
+The constants $c_1,c_2$ can be determined if we know $y(a),y(b)$.
+\section*{Problem 2}
+
+$$J[y] = \int_a^b \left(y(x) - y(x)y'(x) + x(y'(x))^2\right) \; dx,\quad a > 0 $$
+
+\begin{align*}
+F(x,y,y') &= y-yy' + x(y')^2 \\
+F_y &= 1-y', \quad F_{y'} = -y + 2xy' \\
+0 &= F_y - \frac{d}{dx}F_{y'} = 1-y - \frac{d}{dx}\left[2xy' - y\right] \quad \text{(Euler-Lagrange)}\\
+0&= 1-y' -2y' - 2xy'' + y' \\
+0&= (-2x)y'' -2y' + 1 \\
+y'' + \frac{1}{x}y &= \frac{1}{2x} \\
+\mu(x) &= \exp\left(\int \frac{1}{x} \; dx \right) = x \\
+xy'' + y &= \frac{1}{2} \\
+\frac{d}{dx}\left[xy'\right] &= \frac{1}{2}\\
+xy'(x) &= \frac{1}{2}x + c_1 \\
+y'(x) &= \frac{1}{2} + \frac{c_1}{x} \\
+y(x) &= \int_a^b y'(x) \; dx = \frac{1}{2}x + c_1\ln(x) + c_2
+\end{align*}
+
+The constants $c_1,c_2$ can be determined if we know $y(a),y(b)$.
+
+\section*{Problem 3}
+
+$$J[y] = \int_a^b \sqrt{1+(y'(x))^2} \; dx $$
+
+\begin{align*}
+F(x,y,y') &= F(y') = \sqrt{1 + (y')^2}\\
+0 &= F_y - \frac{d}{dx}F_{y'} = 0 - \frac{d}{dx}\left[\frac{y'}{\sqrt{1+(y')^2}}\right] \quad \text{(Euler-Lagrange)} \\
+\implies c &= \frac{y'}{\sqrt{1+(y')^2}}\\
+y'(x) &= \frac{c}{\sqrt{1-c^2}} \\
+y(x) &= \frac{c}{\sqrt{1-c^2}}x + c_2 \\
+y(x) &= c_1x + c_2, \quad \left(c_1 = \frac{c}{\sqrt{1-c^2}} \right)\;.
+\end{align*}
+
+The constants $c_1,c_2$ can be determined if we know $y(a),y(b)$.
+
+\section*{Problem 4}
+
+$$J[y] = \int_a^b \left[2y(x) + (y'(x))^2\right] \; dx $$
+
+\begin{align*}
+F(x,y,y') &= F(y,y') = 2y + (y')^2\\
+0 &= F_y - \frac{d}{dx}F_{y'} = 2 - \frac{d}{dx}\left[2y'\right] \quad \text{(Euler-Lagrange)} \\
+\implies y''(x) &= 1 \\
+y'(x) &= x + c_1 \\
+y(x) &= \frac{x^2}{2} + c_1x + c_2
+\end{align*}
+
+The constants $c_1,c_2$ can be determined if we know $y(a),y(b)$.\\
+
+We could also have used Beltrami's identity since $F(x,y,y') = F(y,y')$. 
+
+\section*{Problem 5}
+
+$$J[y] = \int_a^b \left[y^2(x) -4y(x)y'(x) + 4(y'(x)^2)\right] \; dx $$
+
+\begin{align*}
+F(x,y,y') &= F(y,y') = y^2 - 4yy' + 4(y')^2\\
+0 &= F_y - \frac{d}{dx}F_{y'} = 2y - 4y' - \frac{d}{dx}\left[ -4y + 8y'\right] \quad \text{(Euler-Lagrange)} \\
+0&= 2y-4y' +4y' -8y''\\
+0&= 4y'' - y \\
+\implies y(x) &= c_1e^{\frac{x}{2}} + c_2e^{-\frac{x}{2}} \quad (\text{using the characteristic equation method with } 4r^2 - 1 = 0)\\
+\end{align*}
+An alternative way to write this solution:
+
+\begin{align*}
+y(x) &= c_1e^{\frac{x}{2}} + c_2e^{-\frac{x}{2}} \\
+&= (c_1+c_2)\frac{e^{x/2} + e^{-x/2}}{2} + (c_1 - c_2)\frac{e^{x/2} - e^{-x/2}}{2} \\
+&= (c_1+c_2)\cosh(x/2) + (c_1-c_2)\sinh(x/2) \\
+&= c_3\cosh(x/2) + c_4 \sinh(x/2) \;.
+\end{align*}
+
+As before, we need to know $y(a),y(b)$ in order to determine the constant coefficients. 
+
+
+
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{subfig}
+\setlength\parindent{0pt}
+\usepackage{amssymb}
+\setcounter{section}{-1}
+\title{MA 3475 HW 1 Solutions}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+
+\begin{align*}
+f(x,y) & = 3y^2 -2y^3 -3x^2 + 6xy \\
+f_x(x,y) &= -6x + 6y \quad f_{xx}(x,y) = -6 \\
+f_y(x,y) &= 6y - 6y^2 + 6x \quad f_{yy}(x,y) = 6-12y \\
+f_{xy} &= 6\\
+\text{To find critical points set } 0&=f_{xx}= f_{yy}\\
+0 &= -6x + 6y \\
+0 &= 6y - 6y^2 + 6x \\
+\implies \text{critical points: } & (0,0), (2,2) 
+\end{align*}
+
+Use $D(x,y) = f_{xx}(x,y)f_{yy}(x,y) - \left(f_{xy}(x,y)\right)^2$ in the second derivative test.\\
+
+Since $D(0,0) = -72 < 0$, the critical point $(0,0)$ is a saddle point. \\
+
+Since $D(2,2)= 72 > 0$ and $f_{xx}(2,2) = -6 < 0$, there is a local maximum of $8 = f(2,2)$ at the critical point $(2,2)$. 
+
+\section*{Problem 2}
+
+$$\min_{(x,y)} f(x,y) = x^2y \quad \text{ s.t }\quad  g(x,y) = x^2 + y^2 -3 = 0 $$
+$$\max_{(x,y)} f(x,y) = x^2y \quad \text{ s.t } \quad g(x,y) = x^2 + y^2 -3 = 0 $$
+
+\begin{align*}
+\nabla f &= \langle 2xy, x^2 \rangle \\
+\nabla g &= \langle 2x, 2y \rangle \\
+\nabla f &= \lambda \nabla g \\
+\implies xy &= \lambda x \text{ and } x^2 = 2\lambda y
+\end{align*}
+
+If $x = 0$ then $y=0$ and vice versa. So one solution to this system of equations is $(x,y) = (0,0)$. Otherwise if $(x,y) \neq (0,0)$,
+
+\begin{align*}
+\frac{xy}{x} &= \lambda = \frac{x^2}{2y} \\
+y &= \frac{x^2}{2y} \\
+2y^2 &= x^2 = 3-y^2 \quad \text{(using constraint)} \\
+y^2 &= 1\\
+y &= \pm 1 \\
+\implies (x,y) &= (\pm \sqrt{2}, \pm 1)
+\end{align*}
+
+\begin{align*}
+f(\pm \sqrt{2}, 1) &= 2 \quad \textbf{Maximum} \\
+f(\pm \sqrt{2}, -1) &= -2 \quad \textbf{Minimum} \\
+f(0,0) &= 0 \quad \textbf{Neither maximum nor minimum}
+\end{align*}
+
+\section*{Problem 3}
+
+\begin{align*}
+\min_{n_h} f(n_1, ... , n_H) &= \min_{n_h} \sum_{h=1}^H \left(\frac{S_h}{n_h} - \frac{1}{N_h}\right)\left(\frac{N_h}{N}\right)^2 \\
+\text{subject to}\quad 0 &= g(n_1,...,n_H) = -n + \sum_{h=1}^H n_h \\
+\text{with} \quad N&= N_1 + ... + N_H, \quad H,N_h,N,S_h,n \text{ constant and } n < N .
+\end{align*}
+
+\begin{align*}
+\nabla f &= \bigg\langle -\frac{N_1^2S_1}{N^2n_1^2}, ..., -\frac{N_H^2S_H}{N^2n_H^2} \bigg\rangle \\
+\lambda \nabla g &= \langle \lambda, ... , \lambda \rangle \\
+\nabla f &= \lambda \nabla g  \implies \frac{N_h^2S_h}{N^2n_h^2} = -\lambda, h = 1,...,H\\
+n_h &= \frac{N_h\sqrt{S_h}}{\sqrt{-\lambda}N} \\
+n = \sum_{h=1}^H n_h &= \frac{1}{\sqrt{-\lambda}N}\sum_{h=1}^H N_h\sqrt{S_h} \\
+\frac{1}{\sqrt{-\lambda}} &= \frac{nN}{\sum_{h=1}^H N_h \sqrt{S_h}} \\
+\therefore \quad n_h &= \frac{nN_h\sqrt{S_h}}{\sum_{h=1}^H N_h\sqrt{S_h}}
+\end{align*}
+
+If we make the further assumption that $S_h = S$ for each $h = 1,...,H$, then 
+
+$$n_h = \frac{nN_h\sqrt{S}}{\sqrt{S}\sum_{h=1}^H N_h} = n\frac{N_h}{N} = np_h \;,$$
+where $p_h = N_h / N$. Then,
+
+$$\sum_{h=1}^H p_h = \frac{1}{N}\sum_{h=1}^H N_h = N/N =1 \;.$$
+
+\end{document}

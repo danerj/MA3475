@@ -1,0 +1,98 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{subfig}
+\setlength\parindent{0pt}
+\usepackage{amssymb}
+\setcounter{section}{-1}
+\title{MA 3475 HW 2 Solutions}
+
+\begin{document}
+\maketitle
+
+Find the extremals of the following functionals. 
+\section*{Problem 1}
+
+$$J[y] = \int_a^b \left(y^2(x) - (y'(x))^2 \right) \; dx $$
+
+\begin{align*}
+F(x,y,y') &= y^2 - (y')^2, \quad F_y = 2y, \quad F_{y'} = -2y' \\
+0 &= F_y - \frac{d}{dx}F_{y'} = 2y - \frac{d}{dx}[-2y'] = 2y+2y''\quad \text{(Euler-Lagrange)}\\
+ 0 &= y'' + y \\
+\implies y(x) &= c_1\cos(x) + c_2 \sin(x) 
+\end{align*}
+
+To solve the ODE $0 = y'' + y$, we used the corresponding characteristic equation $0 = r^2 + 1$. The roots of this equation are $r = 0 \pm 1i = \pm i$.\\
+
+The constants $c_1,c_2$ can be determined if we know $y(a),y(b)$. \\
+
+{\bf Alternative Solution:} Since $F(x,y,y') = F(y,y')$ we can also use the Beltrami identity to solve the problem (although it will be more work in this case).
+
+\begin{align*}
+F - y'F_{y'} &= c \in \mathbb{R} \\
+y^2 - (y')^2 - y'(-2y') &= c \\
+y^2 _ (y')^2 &=c \\
+\frac{1}{\sqrt{c-y^2}}\frac{dy}{dx} &= \frac{y'}{\sqrt{c-y^2}} = 1 \\
+\implies \int \frac{1}{\sqrt{c-y^2}} \; dy &= \int dx \\
+\int \frac{\sqrt{c}\cos(u)}{\sqrt{c-c\sin^2(u)}} \; du &= x+c_1 \quad (\text{by the substitution } y = \sqrt{c}\sin(u)) \\
+u &= x+c_1 \\
+\sin(u) &= \sin(x+c_1) \\
+\frac{y}{\sqrt{c}} &= \sin(x + c_1) \\
+y(x) &= \sqrt{c}\sin(x+c_1) \;.
+\end{align*}
+
+The constants $c,c_1$ can be determined if we know $y(a),y(b)$.  The constant $c_1$ from using the Beltrami identity is not the same constant $c_1$ from using the Euler-Lagrange equation. Finally, note that making the substitution $y = \sqrt{c}\cos(u)$ instead of $y = \sqrt{c}\sin(u)$ is also possible. This will give a final answer in terms of the cosine function as $y(x) = \sqrt{c}\cos(-x-c_1) = \sqrt{c}\cos(x+c_1)$. However, this is equivalent to the answer given above. 
+
+\section*{Problem 2}
+
+$$J[y] = \int_a^b \left(xy'(x) + (y'(x))^2 \right) \; dx $$
+
+
+\begin{align*}
+F(x,y,y') &= xy' + (y')^2,  \quad F_y =0, \quad F_{y'} = x + 2y' \\
+0 &= F_y - \frac{d}{dx}F_{y'} = 0 -\frac{d}{dx}\left[x+2y'\right] \quad \text{(Euler-Lagrange)}\\
+\implies c &= F_{y'} = x + 2y' \quad (c \in \mathbb{R})\\
+y' &= c/2 - x/2 \\
+y' &= c_1 - x/2 \quad (c_1 := c/2)\\
+y(x) &= c_1x - x^2/4 + c_2
+\end{align*}
+
+The constants $c_1,c_2$ can be determined if we know $y(a),y(b)$. 
+
+\section*{Problem 3}
+
+$$J[y] = \int_1^2 \left(\frac{\sqrt{1+(y'(x))^2}}{x}\right) \; dx  \quad y(1) = 0, y(2) = 1$$
+
+\begin{align*}
+F(x,y,y') &= F(x,y') = \frac{\sqrt{1+(y'(x))^2}}{x}\\
+F_y &= 0, \quad F_{y'} = \frac{y'}{x\sqrt{1+(y')^2}}\\
+0 &= F_y - \frac{d}{dx} F_{y'} = 0 -\frac{d}{dx}\left[ \frac{y'}{x\sqrt{1+(y')^2}}\right] \quad \text{(Euler-Lagrange)} \\
+\implies c &= F_{y'} = \frac{y'}{x\sqrt{1+(y')^2}} \\
+y'(x) &= \frac{cx}{\sqrt{1-c^2x^2}} \\
+y(x) &=\int y'(x) \; dx = c_1 - \frac{1}{c}\sqrt{1-c^2x^2} \\
+(y-c_1)^2 + x^2 &= \frac{1}{c^2} \\
+y(1) = 0, y(2) = 1 &\implies c = 1/\sqrt{5}, c_1 = 2 \\
+(y-2)^2 + x^2 &= \sqrt{5}^2
+\end{align*}
+
+Remember that we want $y$ as a function of $x$ for an extremal. So from this circle extract
+
+$$y_+(x) = 2+\sqrt{5-x^2}, \quad y_-(x) = 2- \sqrt{5-x^2} \;.$$
+
+Since $(y_+')^2 = (y_-')^2$, it follows that $J[y_+] = J[y_-]$. However, $y_-(1) = 0, y_-(2) = 1$ while $y_+(1) = 4 \neq 0, y_+(2) = 3 \neq 1$ so $y_+$ doesn't meet the boundary conditions and is therefore not an admissible function. 
+
+\end{document}

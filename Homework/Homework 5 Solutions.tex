@@ -1,0 +1,150 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{subfig}
+\setlength\parindent{0pt}
+\usepackage{amssymb}
+\setcounter{section}{-1}
+\title{MA 3475 HW 5 Solutions}
+
+\begin{document}
+\maketitle
+
+
+\section*{Problem 1 (4 points)}
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \lambda (G_y - \frac{d}{dx}G_{y'}) \\
+&= 0 - \frac{d}{dx}[2y'] + \lambda(2y - \frac{d}{dx}[0])\\
+&= - 2y'' + 2\lambda y \\
+& \\
+0 &= -2r^2 + 2\lambda \\
+r^2 &= \pm \sqrt{\lambda} \\
+y(x) &= c_1e^{\sqrt{\lambda}x} + c_2 e^{-\sqrt{\lambda} x} \\
+\end{align*}
+
+Apply the boundary condition $y(0) = 0$ to get $c_2 = -c_1$. Then $y(x) = c_1(e^{\sqrt{\lambda}x} - e^{-\sqrt{\lambda}x})$. Next consider the other boundary condition $0 = y(1) = c_1(e^{\sqrt{\lambda}} - e^{-\sqrt{\lambda}})$. If $\lambda \geq 0$, the boundary condition implies either $c_1 = 0$ of $\lambda = 0$. In either case this means $y \equiv 0$. But $y \equiv 0$ does not satisfy the constraint $\int_0^1 y^2 \; dx = 2$. Therefore, we must have $\lambda < 0$.
+
+\begin{align*}
+y(x) &= c_1\left(e^{\sqrt{\lambda}x} -  e^{-\sqrt{\lambda} x} \right)\\
+&= c_1\left(e^{\sqrt{-\lambda}i x} - e^{-\sqrt{-\lambda} i x}\right) \\
+&= c_1\left[ (\cos \sqrt{-\lambda} x + i \sin \sqrt{-\lambda} x) - (\cos -\sqrt{-\lambda} x + i \sin -\sqrt{-\lambda} x)\right] \\
+&= c_1\left[ (\cos \sqrt{-\lambda} x + i \sin \sqrt{-\lambda} x) - (\cos \sqrt{-\lambda} x - i \sin \sqrt{-\lambda} x)\right] \\
+&= 2c_1 i \sin x\\
+&= \beta \sin \sqrt{-\lambda} x, \quad \beta := 2 c_1 i, \\
+0 &= y(1) = \beta \sin \sqrt{-\lambda} \implies \sqrt{-\lambda} = \pi n, n \in \mathbb{Z} \\
+y(x) &= \beta \sin n\pi x
+\end{align*}
+
+If $n = 0$, we again have $y \equiv 0$, so we must exclude $n = 0$. Apply the constraint to determine $\beta$.
+
+$$2 = \beta^2\int_0^1 \sin^2(n \pi x) \; dx = \beta^2\left[\frac{x}{2} - \frac{1}{4\pi n} \sin 2\pi n x \right]\biggr\rvert_0^1  = \beta^2 / 2 \implies \beta = \pm 2 \;.$$
+
+So we have $y(x) = \pm 2 \sin n \pi x$, $n \in \mathbb{Z} \backslash \{0\}$. Is $J[y]$ extremized for any choice of $n \in \mathbb{Z} \backslash \{0\}$? Use $y'(x) = \pm 2 n \pi \cos (n \pi x)$ in order to evaluate $J[y]$.
+
+$$J[y] = \int_0^1 \left[ (y')^2 + x^2 \right] \; dx = \int_0^1 \left[ 4 n^2 \pi^2 \cos^2(n \pi x) + x^2 \right] \; dx = 2n^2 \pi^2 + \frac{1}{3}\;.$$
+
+There is no $n$ that maximizes the functional. The functional is minimized by taking $n = \pm 1$ (since $n = 0$ is not allowed). 
+
+$$\boxed{ y(x) = \pm 2 \sin (\pm \pi x) } $$
+
+\newpage
+
+\section*{Problem 4 (4 points)}
+
+$$ J[y] = \int_0^a 2\pi y \sqrt{1 + (y')^2} \; dx \quad \text{ subject to } \quad \int_0^a y \; dx = S \;. $$
+
+\begin{align*}
+c &= F - y'F_{y'} + \lambda (G - y'G_{y'}) \quad (\text{(The Beltrami Identity)}\\
+&= 2\pi y \sqrt{1 + (y')^2} - y'\frac{2\pi y y'}{\sqrt{1+(y')^2}} + \lambda (y - y' \cdot 0) \\
+&= 2\pi y \sqrt{1 + (y')^2} - \frac{2\pi y (y')^2}{\sqrt{1+(y')^2}} + \lambda y \\
+&= 2 \pi y \left(\sqrt{1 + (y')^2} - \frac{(y')^2}{\sqrt{1 + (y')^2}}\right) + \lambda y \\
+&= \frac{2\pi y}{\sqrt{1 + (y')^2}} + \lambda y 
+\end{align*}
+
+$$ \frac{c-\lambda y}{2 \pi y} = \frac{1}{\sqrt{1 + (y')^2}} \implies 
+\boxed{y'(x) = \pm  \left(\frac{2\pi y}{c-\lambda y}\right)^2 - 1} \;.$$
+
+\newpage
+
+\section*{Problem 5 (4 points)}
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} = \frac{1}{(y')^2} - \frac{d}{dx}\frac{-2y}{(y')^3} \\
+&= \frac{1}{(y')^2} + \frac{d}{dx}2y(y')^{-3}\\
+&= \frac{1}{(y')^2} + (2y'(y')^{-3} -6y (y')^{-4} y'') \\
+& \\
+\frac{6yy''}{(y')^4} &= \frac{3}{(y')^2} \\
+\frac{yy''}{(y')^2} &= \frac{1}{2} \\
+\text{Let } q(x) &= \frac{y}{y'} \\
+q' (x) &= \frac{(y')^2 - yy''}{(y')^2} = 1 - \frac{yy''}{(y')^2} = \frac{1}{2} \\
+q'(x) &= \frac{1}{2} \implies q(x) = \frac{x}{2} + c_1 \\
+\frac{y}{y'} &= q = \frac{x}{2} + c_1 \\
+\frac{1}{y} \frac{dy}{dx} &= \frac{2}{x + c_1} \quad \text{(reassigning ) } 2c_1 = c_1 \\
+y(x) &= c_2(x+c_1)^2 \\
+& \\
+1 &= y(0) = c_2c_1^2, \\
+4 &= y(1) = c_2(1+c_1)^2 \\
+(c_1,c_2) &= (1,1) \text{ or } (-1/3, 9)
+\end{align*}
+
+$$\boxed{ y(x) = (x+1)^2, \quad y(x) = 9\left(x-\frac{1}{3}\right)^2 = (3x-1)^2 } $$
+
+\newpage
+
+\section*{Problem 6 (4 points)}
+
+In Chapter 5, section 24 of the Gelfand and Fomin text we saw that for functionals of the form
+
+$$J[y] = \int_a^b F(x,y,y') \; dx, $$
+
+defined for curves $y = y(x)$ with fixed end points $y(a) = A, y(b) = B$, the second variation $\delta^2 J[h]$ (where $h$ represents any admissible test function) can be written as
+
+$$\delta^2 J[h] = \int_a^b (P(h')^2 + Qh^2) \; dx $$
+$$ P = P(x) = \frac{1}{2}F_{y'y'}, \quad Q = Q(x) = \frac{1}{2}\left(F_{yy} - \frac{d}{dx}F_{yy'} \right) \;. $$
+
+I believe there was an error in the textbook where we're given $Q(x) = \frac{1}{2}F_{yy'} - \frac{1}{2}\frac{d}{dx}F_{yy'}$. This does not agree with previous lines in the derivation and does not agree with the results from lecture. Also, in lecture the factor of $\frac{1}{2}$ was omitted from both $P$ and $Q$. So no points deducted if your answers are equal to the answers below multiplied by 2. \\
+
+From problem 5, $F(x,y,y') = \frac{y}{(y')^2}$.
+
+\begin{align*}
+F_{y'} &= -\frac{2y}{(y')^3}, \quad F_{y'y'} = \frac{6y}{(y')^4}, \quad F_y = \frac{1}{(y')^2}, \quad F_{yy} = 0, \quad F_{yy'} = -\frac{2}{(y')^3}\\
+P(x) &= \frac{1}{2}F_{y'y'} = \frac{3y}{(y')^4} \\
+Q(x) &= \frac{1}{2}\left(F_{yy} - \frac{d}{dx}F_{yy'} \right) = \frac{1}{2}\left(0- \frac{d}{dx}\left[-\frac{2}{(y')^3} \right]\right) =  \frac{1}{2}\frac{d}{dx}\left[\frac{2}{(y')^3}\right] = -\frac{3y''}{(y')^4}
+\end{align*}
+
+For $y(x) = (x+1)^2$, $y'(x) = 2(x+1) = 2x+2$, $y''(x) = 2$:
+
+\begin{align*}
+\delta^2 J[h] &= \int_0^1 (P h'^2 + Qh^2) \; dx \\
+&= \int_0^1 \left[\frac{3y}{(y')^4} h'^2 - \frac{3y''}{(y')^4} h^2 \right] \; dx \\
+&= \int_0^1 \left[\frac{3(x+1)^2}{(2(x+1))^4} h'^2 - \frac{3\cdot 2}{(2(x+1))^4} h^2 \right] \; dx \\
+&= \int_0^1 \left[\frac{3}{16(x+1)^2} h'^2 - \frac{3}{8(x+1)^4}  h^2 \right] \; dx \\
+\end{align*}
+
+For $y(x) = (3x-1)^2$, $y'(x) = 2(3x-1)(3) = 6(3x-1) =  18x-6$, $y''(x) = 18$:
+
+\begin{align*}
+\delta^2 J[h] &= \int_0^1 (P h'^2 + Qh^2) \; dx \\
+&= \int_0^1 \left[\frac{3y}{(y')^4} h'^2 -  \frac{3y''}{(y')^4} h^2 \right] \; dx \\
+&= \int_0^1 \left[\frac{3(3x-1)^2}{6^4(3x-1)^4} h'^2 -  \frac{3\cdot 18}{6^4(3x-1)^4} h^2 \right] \; dx \\
+&= \int_0^1 \left[\frac{3}{1296(3x-1)^2} h'^2 -  \frac{54}{6^4(3x-1)^4} h^2 \right] \; dx \\
+&= \int_0^1 \left[\frac{1}{432(3x-1)^2} h'^2 - \frac{1}{24(3x-1)^4}  h^2 \right] \; dx \\
+\end{align*}
+
+
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{subfig}
+\setlength\parindent{0pt}
+\usepackage{amssymb}
+\setcounter{section}{-1}
+\title{MA 3475 HW 3 Solutions}
+
+\begin{document}
+\maketitle
+
+The extra credit problems 3 and 5 are omitted from these solutions. For each of the following problems, there were several reasonable alternative methods for arriving at the correct solution but I only include one solution method for each. 
+
+
+\section*{Problem 1}
+
+$$J[y] = \int_0^a \frac{\sqrt{1+(y')^2}}{\sqrt{2g(b-y)}} \;.$$
+
+(a) Let $u(x) = b-y(x)$ so that $u'(x) = -y'(x)$. 
+
+\begin{align*}
+F(x,u,u') &= F(u,u') = \frac{\sqrt{1+(-u')^2}}{\sqrt{2gu}} = \frac{\sqrt{1+(u')^2}}{\sqrt{2gu}} \\
+c &= F - u'F_{u'} \quad \text{(The Beltrami Identity)} \\
+&= \frac{\sqrt{1+(u')^2}}{\sqrt{2gu}} - u'\left( \frac{u'}{\sqrt{2gu}\sqrt{1+(u')^2}} \right) \\
+&= \frac{\sqrt{1+(u')^2}}{\sqrt{2gu}} - \frac{(u')^2}{\sqrt{2gu}\sqrt{1+(u')^2}}\\
+\\
+c\sqrt{2gu}\sqrt{1+(u')^2} &= 1+(u')^2 - (u')^2 = 1 \\
+2c^2gu(1+(u')^2) &= 1 \\
+u(1+(u')^2) &= c_1 \quad (c_1 := 1/(2c^2g))\\
+u + u(u')^2 &= c_1
+\end{align*}
+The result above is reasonable or solve explicitly for $u'$:
+
+$$u' = \pm \sqrt{\frac{c_1 - u}{u}} \;.$$
+
+(b)
+\begin{align*}
+x(\theta) &= \frac{C}{2}(\theta - \sin \theta ), \quad\frac{dx}{d\theta} = \frac{C}{2} - \frac{C}{2}\cos \theta\\
+y(\theta) &= b - \frac{C}{2} + \frac{C}{2}\cos \theta,\quad  \frac{dy}{d\theta} = -\frac{C}{2}\sin \theta\\
+y'(x) &= \frac{dy}{dx} = \frac{dy/d\theta}{dx/d\theta} = \frac{-\sin \theta}{1-\cos \theta}
+\end{align*}
+
+I found that it is relatively straightforward to verify that $u + u(u')^2$ is constant instead of working from the explicit form for $u'$. 
+
+
+
+\begin{align*}
+u + u(u')^2 &= b-y + (b-y)(-y')^2 \\
+&= b-y + (b-y)(y')^2 \\
+&= b - b + \frac{C}{2} - \frac{C}{2}\cos \theta + (b - b + \frac{C}{2} - \frac{C}{2}\cos \theta)\frac{\sin^2\theta}{(1-\cos \theta)^2} \\
+&= \frac{C}{2}(1-\cos \theta)+ \frac{C}{2}(1 - \cos \theta)\frac{\sin^2\theta}{(1-\cos \theta)^2} \\
+&= \frac{C}{2}(1-\cos \theta) + \frac{C}{2}\frac{\sin^2\theta}{1-\cos \theta} \\
+&= \frac{C}{2} \left(\frac{(1-\cos \theta)^2}{1-\cos \theta} + \frac{\sin^2\theta}{1-\cos \theta} \right) \\
+&= \frac{C}{2} \left(\frac{1-2\cos \theta + \cos^2 \theta + 1- \cos^2 \theta}{1-\cos \theta} \right) \\
+&= \frac{C}{2}\frac{2-2\cos \theta}{1-\cos \theta}  \\
+& = C \;.
+\end{align*}
+
+That is, we have confirmed that $u + u(u')^2 = b-y + y(y')^2$ is constant, which is consistent with the Euler-Lagrange equation.
+
+
+\section*{Problem 2}
+
+$$J[y] = \int_0^1 \left( \frac{1}{2}(y')^2 + yy' + y' + y\right) \; dx $$
+
+The values of $y(x)$ are not specified at the endpoints. That is, this is a variable endpoint problem (see Chapter 1 Section 6 of Gelfand and Fomin).
+
+\begin{align*}
+F(x,y,y') &= F(y,y') = \frac{1}{2}(y')^2 + yy' + y' + y \\
+F_y &=y' + 1 \\
+F_{y'} &= y' + y + 1\\
+\end{align*}
+
+Since $F = F(y,y')$, you can use the Beltrami identity again but using the Euler-Lagrange equation appears a bit easier this time.
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} = y' + 1 - (y'' + y' +0) \\
+&= -y'' + 1 \\
+y''(x) &= 1 \\
+y'(x) &= x + c_1 \\
+y(x) &= \frac{x^2}{2} + c_1x + c_2 \\
+\end{align*}
+
+Since $y$ is not specified at the endpoints, we know that the following equations must be satisfied:
+
+
+\begin{align*}
+0 &= F_{y'}(0,y(0),y'(0)) =  y'(0) + y(0) + 1 = (0+c_1) + (0 + 0 + c_2) + 1 = c_1 + c_2 + 1\\
+0 &= F_{y'}(1,y(1),y'(1)) = y'(1) + y(1) + 1 = (1+c_1) + (\frac{1}{2} + c_1 + c_2) + 1 = 2c_1 +c_2 + \frac{5}{2}\\
+\implies c_1 &= -\frac{3}{2}, \quad c_2 = \frac{1}{2} \\
+\therefore \quad y(x) &= \frac{x^2}{2} - \frac{3}{2}x + \frac{1}{2} \;.
+\end{align*}
+
+
+\section*{Problem 4}
+
+Find the extremal(s) of the following functional
+
+$$J[y] = \int_0^b \left(\sqrt{1- k^2 + (y')^2} - ky' \right) \; dx $$
+
+in the class of $\mathcal{D}_2[0,b]$ functions with $y(0) = 0$, $y(b)$ free and $0<k<1$. 
+
+\begin{align*}
+F(x,y,y') &= \sqrt{1- k^2 + (y')^2} - ky' \\
+0 &= F_y - \frac{d}{dx}F_{y'} = 0 - \frac{d}{dx}\left[ \frac{y'}{\sqrt{1 - k^2 +(y')^2}} - k \right]\\
+\implies c_1 &= \frac{y'}{\sqrt{1 - k^2 +(y')^2}} - k \\
+(k+c_1)^2(1- k^2 + (y')^2) &= (y')^2 \\
+c_2 - c_2k^2 + c_2(y')^2 &= (y')^2 \quad (c_2 = k+c_1) \\
+(y')^2(1-c_2) &= c_2(1-k^2) \\
+y'(x) &= c_2(1-k^2) / (1-c_2) =: c_3 \\
+y(x) &= c_3x + c_4
+\end{align*}
+
+\begin{align*}
+0 &= y(0) = 0 + c_4 \implies c_4 = 0 \;. \\
+0 &= F_{y'}(b,y(b),y'(b))\\
+& = \frac{y'(b)}{\sqrt{1-k^2 + (y'(b))^2}} - k = \frac{c_3}{\sqrt{1-k^2 + c_3}} - k \\
+c_3 &=k^2(1-k^2 + c_3) \\
+c_3 &= k^2 - k^4 + k^2c_3\\
+c_3(1-k^2) &= k^2(1-k^2) \\
+c_3 &= k^2 \quad (0<k<1 \implies 1-k^2 \neq 0) \\
+c_3 &= \pm k \;.
+\end{align*} 
+
+$$y(x) = \pm kx \;.$$
+\end{document}

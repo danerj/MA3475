@@ -1,0 +1,199 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{float}
+\usepackage{enumerate}
+\usepackage{subfig}
+\setlength\parindent{0pt}
+\usepackage{amssymb}
+\setcounter{section}{-1}
+\title{MA 3475 HW 4 Solutions}
+
+\begin{document}
+\maketitle
+
+
+\section*{Problem 1 (4 points)}
+
+Find the extremals of the functional
+
+$$J[y,z] = \int_a^b \left[(y')^2 + (z')^2 + y'z' \right] \; dx $$
+
+$$F_y = 0, \quad F_{y'} = 2y' + z', \quad F_z = 0, \quad F_{z'} = 2z' + y' \;. $$
+
+\begin{align*}
+&\text{System of Euler - Lagrange Equations:} \\
+0 & = F_y - \frac{d}{dx}F_{y'} = 0 - \frac{d}{dx}[2y' + z'] \\
+0 &= F_z - \frac{d}{dx}F_{z'} = 0 - \frac{d}{dx}[2z' + y'] \\
+& \implies \\
+c_1 &= 2y' + z' \\
+c_2 &= 2z' + y'
+\end{align*}
+
+One way you may proceed from this point is as follows:
+
+\begin{align*}
+2c_1 - c_2 &= 4y' + 2z' - 2z' - y' = 3y' \\
+y'(x) &= \frac{2c_1 - c_2}{3} \\
+y(x) &= \frac{2c_1 - c2}{3}x + d_2 \\
+y(x) &= d_1x + d_2, \quad d_1, d_2 \in \mathbb{R}
+\end{align*}
+
+\begin{align*}
+c_1 - 2c_2 &= -3z' \\
+z'(x) &= \frac{c_1-2c_2}{3} \\
+z(x) &= \frac{c_1 - 2c_2}{3}x + d_4 \\
+z(x) &= d_3x + d_4, \quad d_3,d_4 \in \mathbb{R}
+\end{align*}
+
+\begin{align*}
+y(x) &= d_1x +d_2 \\
+z(x) &= d_3x + d_4
+\end{align*}
+
+\newpage
+
+\section*{Problem 2 (4 points)}
+
+Find the extremals of the functional
+
+$$J[y,z] = \int_a^b \left[2yz -2y^2 + (y')^2 - (z')^2 \right] \; dx $$
+
+$$F_y = 2z -4y, \quad F_{y'} = 2y', \quad F_z = 2y, \quad F_{z'} = -2z' \;. $$
+
+\begin{align*}
+&\text{System of Euler - Lagrange Equations:} \\
+0 & = F_y - \frac{d}{dx}F_{y'} = 2z-4y - \frac{d}{dx}[2y'] = 2z - 4y - 2y'' \\
+0 &= F_z - \frac{d}{dx}F_{z'} = 2y - \frac{d}{dx}[-2z']  = 2y + 2z''\\
+&\implies \\
+0 &= z- 2y - y'' \\
+0&= y+z''
+\end{align*}
+
+One way you may proceed from this point is as follows:
+
+\begin{align*}
+0 &= y+z'' \implies z'' = -y \implies z^{(4)}= -y'' \\
+\therefore \quad 0 &=z-2y-y'' = z+2z'' + z^{(4)} \quad \text{(Equation 1)}\\
+& \\
+0 &= z-2y - y'' \implies y''+2y = z \implies y^{(4)} + 2y'' = z'' \\
+\therefore \quad 0 &= y+z'' = y+2y'' + y^{(4)} \quad \text{(Equation 2)}
+\end{align*}
+
+Use Equation 1 to solve for $z(x)$ and use Equation 2 to solve for $y(x)$. Note, however, that both differential equations have the same corresponding characteristic equation. So we only need to go through the work one time. Since the characteristic equation has degree 4 there must be 4 roots counting multiplicities.
+
+\begin{align*}
+0 &= r^4 + 2r^2 + 1 \\
+0 &= (r^2+1)^2 \\
+r^2 &= -1 \quad \text{(repeated root - but what is } r \text{?)} \\
+r &= \pm i \implies r_1,r_2 = i, r_3,r_4 = -i \quad \text{ are the roots.}
+\end{align*}
+
+Recall from your differential equations course that for repeated roots, you get a second solution by multiplying your first solution by $x$. From here you can skip down to the final solution for $y(x)$ but in case the reason is mysterious to you  an  intermediate step is given below. Use Euler's identity, the fact that cosine is an even function and sine is an odd function, and combining constants as appropriate to get to the final result.  
+
+$$\underline{r_1,r_2 = i}: \quad z_1(x) =  c_1(\cos (x) +  \sin (x)) + c_2 x (\cos (x) + \sin (x)) $$
+$$\underline{r_2,r_3 = -i}: \quad z_2(x) = c_3( \cos(-x) +  \sin (-x)) + c_4 x (\cos (-x) +  \sin (-x) ) $$
+$$ z(x) = z_1(x) + z_2(x)$$
+$$z(x) = d_1\cos x + d_2 \sin x + d_3 x \cos x + d_4 x \sin x, \quad d_1, d_2, d_3, d_4 \in \mathbb{R}\;.$$
+
+$$\text{Similarly,} \quad y(x) = b_1\cos x + b_2 \sin x + b_3 x \cos x + b_4 x \sin x, \quad b_1, b_2, b_3, b_4 \in \mathbb{R} \;.$$
+
+{\bf Alternative:} You might notice that since $-z'' = y$, you can differentiate your result for $z$ twice and apply a negative sign to get $y$. A helpful advantage of this method is that you get the constant coefficients in the expression for $y$ in terms of the constants used to express $z$ which allows you to solve for constants given only 4 boundary conditions. 
+
+\newpage
+
+\section*{Problem 3 (4 points)}
+
+Find the extremals of the functional
+
+$$J[y] = \int_0^1 \left[ 1+ (y'')^2 \right] \; dx $$
+
+subject to the boundary conditions $y(0) = 0, y'(0) = 1, y(1) = 1, y'(1) = 1$.
+
+$$F_y = 0, \quad F_{y'} = 0, \quad F_{y''} = 2y'' \;. $$
+
+Set up and solve the Euler-Lagrange equation:
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \frac{d^2}{dx^2} F_{y''} = 0 - \frac{d}{dx}[0] + \frac{d}{dx}[2y''] \\
+y^{(4)}(x) &= 0 \\
+&\implies \\
+y(x) &= c_3x^3 + c_2x^2 + c_1x + c_0 \\
+y'(x) &= 3c_3x^2 + 2c_2x + c_1
+\end{align*}
+
+Applying the conditions gives a system of equations to solve for the constants.
+
+\begin{align*}
+0 &= 0 + 0 + 0 + c_0 \\
+0 &= 0 + 0 + c_1 \\
+1 &= c_3 + c_2 + c_1 + c_0 \\
+1 &= 3c_3 + 2c_2 + c_1
+\end{align*}
+
+I'll leave the algebra to you but you should arrive at $c_3=c_2=c_0 = 0$, $c_1 = 1$. Conclude,
+
+$$y(x) = x \;.$$
+
+\newpage
+
+
+\section*{Problem 4 (4 points)}
+
+Find the extremals of the functional
+
+$$J[y] = \int_0^{\pi /2} \left[(y'')^2 - y^2 + x^2 \right] \; dx $$
+
+subject to the boundary conditions $y(0) = 1, y'(0) = 0, y(\frac{\pi}{2}) = 0, y'(\frac{\pi}{2}) = 1$.
+
+$$ F_y = -2y, \quad F_{y'} = 0, \quad F_{y''} = 2y'' \;.$$
+
+Set up and solve the Euler-Lagrange equation:
+
+\begin{align*}
+0 &= -2y - \frac{d}{dx}[0] + \frac{d^2}{dx^2}[2y''] \\
+0 &= y^{(4)} - y \\
+0 &= r^4 - 1 \quad \text{(corresponding characteristic equation)}\\
+r^4 &= 1 \quad \text{(Let } r = e^{i\theta} \text{)} \\
+1 &= r^4 = e^{4i\theta} = \cos 4\theta + i \sin 4 \theta \\
+\implies 1 &= \cos 4\theta \\
+4\theta &= 0 + 2\pi k, \quad k = 0,1,2,3 \\
+\theta &= 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}\\
+\theta = 0 &\implies r_1 = 1 \\
+\theta = \frac{\pi}{2} &\implies r_2 = i \\
+\theta = \pi &\implies r_3 = -1 \\
+\theta = \frac{3\pi}{2} & \implies r_4 = -i \\
+\therefore \quad y(x) &= c_1e^x + c_2e^{-x} + c_3 \cos x + c_4 \sin x \\
+y'(x) &= c_1 e^x - c_2e^{-x} - c_3 \sin x + c_4 \cos x
+\end{align*}
+
+Apply the conditions to get a systems of equations to solve for the constants.
+
+\begin{align*}
+1 &= c_1 + c_2 + c_3 \\
+0 &= c_1 - c_2 + c_4 \\
+0 &= c_1 e^{\frac{\pi}{2}} + c_2 e^{-\frac{\pi}{2}} + c_4 \\
+1 &= c_1e^{\frac{\pi}{2}} - c_2 e^{-\frac{\pi}{2}} - c_3 \\
+& \\
+c_1 = \frac{1+e^{-\frac{\pi}{2}}}{2}, \quad c_2 &= \frac{1-e^{\frac{\pi}{2}}}{2}, \quad c_3 = \frac{e^{\frac{\pi}{2}} - e^{-\frac{\pi}{2}}}{2}, \quad c_4 = -\frac{e^{\frac{\pi}{2}} + e^{-\frac{\pi}{2}}}{2} \\
+c_1 \approx 0.60394, \quad c_2 & \approx -1.9052, \quad c_3 \approx 2.3013, \quad c_4 \approx -2.5092 \\
+\end{align*}
+
+$$ y(x) = \frac{1+e^{-\frac{\pi}{2}}}{2}e^x + \frac{1-e^{\frac{\pi}{2}}}{2}e^{-x} + \frac{e^{\frac{\pi}{2}} - e^{-\frac{\pi}{2}}}{2}\cos x - \frac{e^{\frac{\pi}{2}} + e^{-\frac{\pi}{2}}}{2} \sin x $$
+
+
+
+
+
+\end{document}

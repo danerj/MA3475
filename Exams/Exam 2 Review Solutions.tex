@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+\special{papersize=8.5in,11.0in}
+\usepackage{graphicx,hyperref,fullpage}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\pagestyle{empty}
+\newcommand{\bfr}{{\bf r}}
+\begin{document}
+
+\noindent MA 3475\,\,Exam II Review 
+
+
+\begin{enumerate}
+\item Find the extremal of the functional
+$$
+J[y,z] = \int_0^1 \left((y^{\prime})^2 - (z^{\prime})^2 - 8y'y -4 y^2 \right)\,dx,
+$$
+
+subject to the boundary conditions $y(0) = 1, y(1)=  0, z(0) = 0, z(1) = e$.
+
+{\bf Answer}
+
+Set up and solve the system of Euler-Lagrange equations.
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} = -8y' -8y - \frac{d}{dx}[2y' - 8y] = -8y' - 8y - 2y'' + 8y' = -2y'' - 8y \\
+0 &= F_z - \frac{d}{dx}F_{z'} = 0 - \frac{d}{dx}[-2z'] = 2z'' \\
+& \\
+0 &= -2y'' - 8y \implies 0 = y'' + 4y \\
+0 &= r^2 + 4 \\
+r &= \pm 2 i \\
+y(x) &= c_1\cos(2x) + c_2 \sin(2x) \\
+& \\
+0 &= 2z'' \implies z(x) = c_3x + c_4
+\end{align*}
+
+Apply the boundary conditions.
+
+\begin{align*}
+1 &= y(0) = c_1 \\
+0 &= y(1) = c_1\cos 2 + c_2 \sin 2 = \cos 2 + c_1 \sin 2 \implies c_2 = -\frac{\cos 2}{\sin 2} \\
+& \\
+0 &= z(0) = c_4 \\
+e &= z(1) = c_3 + c_4 = c_3
+\end{align*}
+
+$$\boxed{y(x) = \cos 2x  -\frac{\cos 2}{\sin 2} \sin 2x} $$
+$$\boxed{z(x) = ex }$$
+
+\newpage
+
+
+\item Find the extremal of the functional
+%\begin{eqnarray*}
+$$
+J[y] = \int_0^{\pi/2} \left((y^{\prime})^2 - (y^{\prime\prime})^2 \right) \,dx
+$$
+subject to the boundary conditions $y(0) = 0, y'(0) = 0, y\left(\frac{\pi}{2}\right) = 1, y'\left(\frac{\pi}{2}\right) = 1$.
+
+{\bf Answer} Set up and solve the Euler-Lagrange equation.
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \frac{d^2}{dx^2}F_{y''} \\
+&= 0 -\frac{d}{dx}[2y'] + \frac{d^2}{dx^2}[-2y'']\\
+&= -2y'' - 2y^{(iv)} \\
+& \\
+0 &= -2r^2 - 2r^4 \quad \text{(characteristic equation)} \\
+0 &= r^2(r^2+1) \\
+&\\
+r = 0 & \text{ (double root), } r = \pm i \\
+&\\
+y(x) &= c_0 + c_1x + c_2\cos x + c_3 \sin x \\
+y'(x) &= c_1 - c_2 \sin x + c_3 \cos x
+\end{align*}
+
+Apply the boundary conditions.
+
+\begin{align*}
+0 &= y(0) = c_0 + c_2 \\
+0 &= y'(0) = c_1 + c_3 \\
+1 &= y\left(\frac{\pi}{2}\right) = c_0 + c_1\frac{\pi}{2} + c_3\\
+1 &= y'\left(\frac{\pi}{2}\right) = c_1-c_2
+\end{align*}
+
+$$c_0 = 1, c_1 = 0, c_2 = -1, c_3 = 0 $$
+$$\boxed{y(x) = 1 - \cos x} $$
+
+\newpage
+\item Find the extremal of the functional
+%\begin{eqnarray*}
+$$
+J[y] = \int_a ^b \left((y''')^2  + (y'')^2  \right)\,dx
+$$
+
+How many boundary conditions do you need to specify at the two endpoints to determine the extremal uniquely?
+
+{\bf Answer} Set up and solve the Euler-Lagrange equation.
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \frac{d^2}{dx^2}F_{y''} - \frac{d^3}{dx^3}F_{y'''} \\
+&= 0 - \frac{d}{dx}[0] + \frac{d^2}{dx^2}[2y''] - \frac{d^3}{dx^3}[2y'''] \\
+&= 2y^{(iv)} - 2y^{(vi)} \\
+& \\
+0 &= 2r^4 - 2r^6 \quad \text{(characteristic equation)} \\
+0 &= r^4(r^2-1) \implies r = 0 \text{ (root with multiplicity 4) or } r= \pm 1 
+\end{align*}
+
+$$\boxed{ y(x) = c_0 + c_1x +c_2x^2 + c_3x^3 + c_4e^x + c_5e^{-x}}$$
+
+You need to have 6 boundary conditions specified in order to determine the extremal uniquely.
+
+\newpage
+
+\item Find the extremal of the functional
+$$
+J[y] = \int_0^1 \left( x^2 + (y^{\prime})^2 \right) \,dx
+$$
+subject to the conditions $y(0) = 0, y(1) = 0$ and the constraint $\int_0^1 \left( x^2 + 2 y(x) \right)\,dx = 1$.
+
+{\bf Answer}
+
+Let $G(x,y,y') = x^2 + 2y(x)$ so that $1 = \int_0^1 \left( x^2 +2y(x)\right) \; dx = \int_0^1 G(x,y,y') \; dx$. First set up and solve the Euler-Lagrange equation for $y(x)$. 
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \lambda (G_y - \frac{d}{dx}G_{y'}) \\
+&= 0 - \frac{d}{dx}[2y'] + \lambda (2 - \frac{d}{dx}[0]) \\
+&= -2y''  + 2\lambda \\
+y''(x) &= \lambda \\
+y(x) &= \frac{\lambda}{2}x^2 + Ax + B \\
+\end{align*}
+
+Next apply the boundary conditions.
+
+\begin{align*}
+0 &= y(0) = B \\
+0 &= y(1) = \frac{\lambda}{2} + A \implies A = -\frac{\lambda}{2} \\
+y(x) &= \frac{\lambda}{2}x^2 - \frac{\lambda}{2}x
+\end{align*}
+
+Finally, apply the integral constraint.
+
+\begin{align*}
+1 &= \int_0^1 \left(x^2 + \lambda x^2 - \lambda x \right) \, dx \\
+&= \frac{1}{3} + \frac{\lambda}{3} - \frac{\lambda}{2} = \frac{1}{3} -\frac{\lambda}{6} \\
+\lambda &= -4
+\end{align*}
+
+$$\boxed{ y(x) = -2x^2+2x } $$
+
+\newpage
+
+\item Find the extremal of the functional
+$$
+J[y] = \int_0^1 \frac{1}{2} (y^{\prime})^2 \,dx
+$$
+subject to the conditions $y(0) = 0, y(1) = 1$ and the constraint $\int_0^1 \frac{1}{2}y^2 \,dx = 1$. For this problem   you may stop after expressing $y(x)$ in terms of the multiplier $\lambda$ but this should be the only unknown constant. For a challenge, determine $\lambda$ to finish solving the problem.
+
+{\bf Answer:} 
+
+\begin{align*}
+0 &= 0 - \frac{d}{dx}[y'] + \lambda y - \frac{d}{dx}[0] \\
+0 &= y'' - \lambda y \\
+&\\
+0 &= r^2 - \lambda \\
+r &= \pm \sqrt{\lambda} \\
+& \\
+y(x) &= c_1e^{\sqrt{\lambda}x} + c_2 e^{-\sqrt{\lambda}x} \\
+\end{align*}
+
+Apply the boundary conditions.
+
+\begin{align*}
+0 &= y(0) = c_1 + c_2 \implies c_2 = -c_1\\
+1 &= y(1) = c_1 \left(e^{\sqrt{\lambda}} -e^{-\sqrt{\lambda}} \right) = 2c_1 \sinh \sqrt{\lambda} \implies c_1 = \frac{1}{2\sinh \sqrt{ \lambda}} \\
+y(x) &= \frac{1}{2\sinh \sqrt{ \lambda}}\left(e^{\sqrt{\lambda} x} -e^{-\sqrt{\lambda} x} \right) = \frac{2\sinh \sqrt{\lambda}x }{2\sinh \sqrt{ \lambda}} = \frac{\sinh \sqrt{ \lambda}x }{\sinh \sqrt{ \lambda}}
+\end{align*}
+
+Apply the integral constraint to determine $\lambda$. 
+
+\begin{align*}
+1 &= \int_0^1 \frac{1}{2}\left(\frac{\sinh \sqrt{ \lambda}x }{\sinh \sqrt{ \lambda}}\right)^2 \, dx 
+\end{align*}
+\end{enumerate}
+\end{document}

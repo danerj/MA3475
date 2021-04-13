@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\special{papersize=8.5in,11.0in}
+\usepackage{graphicx,hyperref,fullpage}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\pagestyle{empty}
+\newcommand{\bfr}{{\bf r}}
+\begin{document}
+
+\noindent MA 3475\,\,Exam II, 3/18/2021\hfill NAME
+\rule{6cm}{1pt}\\
+
+
+\begin{enumerate}
+\item (5 points)\,\,Find the extremal of the functional
+$$
+J[y,z] = \int_0^{\pi/2} \left((y^{\prime})^2 + (z^{\prime})^2 + 2y z \right) \,dx
+$$
+subject to the boundary conditions $y(0) = 1, z(0) = 1, y\left(\frac{\pi}{2}\right) = 0,  z\left(\frac{\pi}{2}\right) = 0$.\\
+
+{\bf Answer}
+
+Set up and solve the system of Euler-Lagrange equations.
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} = 2z - \frac{d}{dx}[2y'] = 2z - 2y'' \\
+0 &= F_z - \frac{d}{dx}F_{z'} = 2y - \frac{d}{dx}[2z'] = 2y - 2z''\\
+& \\
+0 &= 2z-2y''\\
+0 &= 2y - 2z''\\
+& \\
+0 &= 2z - 2y'' \implies y^{(iv)} = z''\\
+\text{Then, } 0 &= 2y - 2z'' = 2y - 2(y^{(iv)}) = 2y - 2y^{(iv)}\\
+& \\
+0 &= 2r^4 - 2 \quad \text{(characteristic equation)}\\
+0 &= r^4 - 1 = (r^2 - 1)(r^2 + 1)\\
+r &= \pm 1, \pm 1 i\\
+& \\
+y(x) &= c_1 e^x + c_2 e^{-x} + c_3 \cos x + c_4 \sin x
+\end{align*}
+
+
+We can use a similar process to solve for $z(x)$ (the differential equation is $z^{(iv)} - z = 0$) but since we want to solve for the constants instead use that $z = y''$ to express $z(x)$ using the same constants as we used to express $y(x)$.
+
+
+$$z(x) = y''(x) =  c_1 e^x + c_2 e^{-x} - c_3 \cos x - c_4 \sin x$$
+
+Apply the boundary conditions. 
+\begin{align*}
+1 = y(0) &= c_1 + c_2 + c_3 \quad (1)\\
+1 = z(0) &= c_1 + c_2 - c_3 \quad (2)\\
+0 = y\left(\frac{\pi}{2}\right) &= c_1\exp\left(\frac{\pi}{2}\right) + c_2\exp\left(-\frac{\pi}{2}\right)  + c_4  \quad (3)\\
+0 = z\left(\frac{\pi}{2}\right) &= c_1\exp\left(\frac{\pi}{2}\right) + c_2\exp\left(-\frac{\pi}{2}\right)  - c_4 \quad (4) \\
+& \\
+(1),(2) &\implies c_3 = 0 \\
+(3),(4) & \implies c_4 = 0 \\
+(1) + (2) & \implies c_1+c_2 = 1  \quad (5)\\
+(3) + (4) & \implies -c_1e^\pi = c_2  \quad (6)\\
+(5),(6) &\implies c_1 = \frac{1}{1- e^\pi}, c_2 = \frac{e^\pi}{e^\pi - 1}
+\end{align*}
+
+$$\boxed{ y(x) = \frac{1}{1- e^\pi}e^x + \frac{e^\pi}{e^\pi - 1}e^{-x} }$$
+$$\boxed{ z(x) = \frac{1}{1- e^\pi}e^x + \frac{e^\pi}{e^\pi - 1}e^{-x} } $$
+
+\newpage
+\item (5 points)\,\,Find the extremal of the functional
+%\begin{eqnarray*}
+$$
+J[y] = \int_a ^b \left((y^{\prime})^2 + (y^{\prime\prime})^2 \right) \,dx
+$$
+How many boundary conditions do you need to specify at the two endpoints to determine the extremal uniquely?\\
+
+{\bf Answer} \\
+
+Set up and solve the Euler-Lagrange equation.
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \frac{d^2}{dx^2}F_{y''} \\
+&= 0 - \frac{d}{dx}[2y'] + \frac{d^2}{dx^2}[2y''] \\
+&= -2y'' + 2y^{(iv)} \\
+& \\
+0 &= -2r^2 +2r^4 \\
+0 &= r^4 -r^2 = r^2(r^2 - 1) \\
+r_1,r_2 &= 0, r_3 = 1, r_4 = -1\\
+& \\
+y(x) &= c_0e^{0x} + c_1xe^{0x} + c_2e^{x} + c_3 e^{-x}
+\end{align*}
+
+$$\boxed{ y(x) = c_0 + c_1x + c_2e^x + c_3 e^{-x} }$$
+
+You'll need to specify 4 boundary conditions at the endpoints to determine the four constants $c_0,c_1,c_2,$ and $c_3$ uniquely. 
+
+
+\newpage
+\item(5 points)\,Find the extremal of the functional
+$$
+J[y] = \int_0^1 (y^{\prime})^2\,dx
+$$
+subject to the conditions $y(0) = 0, y(1) = 0$ and the constraint $\int_0^1 y(x)\,dx = A$, where $A$ is a given constant. You need to find the Lagrange multiplier as a function of $A$ and cannot leave your answer in terms of the Lagrange multiplier.\\
+
+{\bf Answer}
+
+Let $G(x,y,y') = y(x)$ so that $A = \int_0^1 y(x) \; dx = \int_0^1 G(x,y,y') \; dx$. First set up and solve the Euler-Lagrange equation for $y(x)$. 
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} + \lambda (G_y - \frac{d}{dx}G_{y'}) \\
+&= 0 - \frac{d}{dx}[2y'] + \lambda(1 - \frac{d}{dx}[0]) = \lambda - 2y'' \\
+& \\
+y''(x) &= \frac{\lambda}{2} \implies y(x) = \frac{\lambda}{4}x^2 + c_1x + c_2
+\end{align*}
+
+Next apply the boundary conditions $y(0) = 0$ and $y(1) = 0$.
+
+\begin{align*}
+0 &= y(0) = c_2 \\
+0 &= y(1) = \frac{\lambda}{4}+c_1 \implies c_1 = -\frac{\lambda}{4} \\
+& \\
+y(x) &= \frac{\lambda}{4}x^2 - \frac{\lambda}{4}x
+\end{align*}
+
+Finally, apply the integral constraint to determine $\lambda$ in terms of the given constant $A$.
+
+\begin{align*}
+A &= \int_0^1 \left(\frac{\lambda}{4}x^2 - \frac{\lambda}{4}x\right) \; dx \\
+&= \frac{\lambda}{12} - \frac{\lambda}{8} = -\frac{1}{24}\lambda \\
+\lambda &= -24A
+\end{align*}
+
+$$\boxed{ y(x) = -6Ax^2 + 6Ax } $$
+
+\end{enumerate}
+\end{document}

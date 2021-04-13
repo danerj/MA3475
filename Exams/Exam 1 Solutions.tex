@@ -1,0 +1,167 @@
+\documentclass[12pt]{article}
+\special{papersize=8.5in,11.0in}
+\usepackage{graphicx,hyperref,fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\pagestyle{empty}
+\newcommand{\bfr}{{\bf r}}
+\begin{document}
+
+\noindent MA 3475\,\,Exam I, 2/25/2021\hfill NAME
+\rule{6cm}{1pt}\\
+
+This is an open book open notes exam but you are not allowed to access the Internet or ask anyone for help. The answers must be 100\% your work. Show your work as unsupported answers may receive no credit. 
+
+\begin{enumerate}
+\item (5 points)\,\,Find the extremal of the functional
+$$
+J[y] = \int_a^b 12xy + (y^{\prime})^2\,dx\,.
+$$
+
+\begin{align*}
+F(x,y,y') &= 12xy + (y')^2 \\
+F_y &= 12x \\
+F_{y'} &= 2y'\\
+\\
+0 &= F_y - \frac{d}{dx}F_{y'} \quad \text{(Euler-Lagrange equation)} \\
+&= 12x - \frac{d}{dx}[2y'] \\
+&= 12x - 2y'' \\
+\\
+y''(x) &= 6x \\
+y'(x) &= 3x^2 + c_1 \\
+y(x) &= x^3 + c_1x + c_2 \;, \quad c_1,c_2 \in \mathbb{R} \;.
+\end{align*}
+
+\newpage
+\item (5 points)\,\,Consider the functional
+%\begin{eqnarray*}
+$$
+J[y] = \displaystyle\int_1^2 x^2(y^{\prime})^2 + 2y^2\,dx\,.
+$$
+\begin{itemize}
+\item (2 points)\,\,Find the Euler-Lagrange equation of the above functional.
+
+\begin{align*}
+F(x,y,y') &= x^2(y')^2 + 2y^2 \\
+F_y &= 4y \\
+F_{y'} &= 2x^2y'\\
+\\
+0 &= F_y - \frac{d}{dx}F_{y'} \quad \text{(Euler-Lagrange equation)} \\
+&= 4y - \frac{d}{dx}[2x^2y'] \\
+&= 4y - 2(2xy' + x^2y'') \\
+&= 4y - 4xy' - 2x^2y''\\
+\\
+&\text{Simplify:}\\
+\\
+0&= x^2y''(x) +2xy'(x) -2y(x)
+\end{align*}
+
+\item (1 point)\,\,Find $r$ such that $y(x) = x^r$ solves your Euler-Lagrange equation.
+
+Suppose $y(x) = x^r$ solves the ODE above for some constant $r$. Then $y'(x) = rx^{r-1}$ and  $y''(x) = r(r-1)x^{r-2}$.
+
+\begin{align*}
+0 &= x^2r(r-1)x^{r-2} + 2xrx^{r-1} - 2x^r \\
+0&= r(r-1)x^r + 2rx^r - 2x^r \\
+0 &= (r(r-1) + 2r - 2)x^r \\
+\implies 0 &= r^2 + r - 2 \\
+0 &= (r-1)(r+2)\\
+r &= 1, -2
+\end{align*}
+
+$\therefore \quad y_1(x) = x$ and  $y_2(x) = x^{-2}$  solve the diferential equation. The general solution to the differential equation is
+
+$$y(x) = c_1x + \frac{c_2}{x^2} \;. $$
+
+\newpage
+\item (2 points)\,\,Find the extremal of $J[y]$ satisfying the boundary conditions $y(1) = 0$, \\
+$y(2) = -\frac{7}{4}\,.$
+\end{itemize}
+
+\begin{align*}
+0 &= c_1 + c_2 \implies c_2 = -c_1\\
+-\frac{7}{4}& =  2c_1 +\frac{c_2}{4} = 2c_1 - \frac{c_1}{4} = \frac{7c_1}{4}\\
+\\
+c_1 &= -1\\
+c_2 &= 1
+\end{align*}
+
+\begin{align*}
+y(x) &= -x + \frac{1}{x^2} \;.
+\end{align*} 
+
+
+\newpage
+\item (5 points)\,\,
+Determine the extremal of the functional
+$$
+J[y] = \int_0^1 (y^{\prime})^2 - 2\alpha y y^{\prime} - 2\beta y^{\prime}\,dx
+$$
+where $\alpha, \beta$ are nonzero constants for each of the following boundary conditions.
+
+(a)
+
+\begin{align*}
+0 &= F_y - \frac{d}{dx}F_{y'} = -2\alpha y' - \frac{d}{dx}\left[2y' - 2\alpha y - 2\beta \right] \\
+&= -2\alpha y' - 2y'' + 2\alpha y' + 0 \\
+&= -2y'' \\
+\implies y''(x) &= 0 \\
+y'(x) &= c_1 \\
+y(x) &= c_1x + c_2
+\end{align*}
+
+Since $F = F(y,y')$, the Beltrami identity could be applied to get the same result: 
+\begin{align*}
+F(x,y,y') &= F(y,y') = (y')^2 -2\alpha y y' - 2\beta y' \\
+F_{y'} &= 2y' - 2\alpha y - 2\beta \\
+c &= F - y'F_{y'} \quad \text{(The Beltrami Identity)} \\
+&= (y')^2 -2\alpha y y' - 2\beta y' - y'(2y' - 2\alpha y - 2\beta )\\
+&= (y')^2 -2\alpha y y' - 2\beta y' - 2(y')^2 + 2\alpha y y' + 2\beta y' \\
+&= -(y')^2 \\
+\implies y'(x) &= \sqrt{-c} \\
+y(x) &= \sqrt{-c}x + c_2 = c_1x + c_2
+\end{align*}
+
+
+For use in parts (c) and (d), $y'(x) = c_1$.\\
+
+\noindent (b)\,\,$y(0) = 0, \,y(1) = 1$.
+
+\begin{align*}
+0 &= c_1(0) + c_2 = c_2 \\
+1 &= c_1 + c_2 = c_1 \\
+\\
+y(x) &= x
+\end{align*}
+
+\noindent (c)\,\,$y(0) = 0$, $y(1)$ is free.
+
+\begin{align*}
+(y(0) = 0): \quad 0 &= c_1(0) + c_2 = c_2 \\
+(y(1) \text{ free}): \quad 0 &= F_{y'}(1,y(1),y'(1)) = 2y'(1) - 2\alpha y(1) - 2\beta \\
+&= 2c_1 - 2\alpha (c_1(1) + c_2) - 2\beta \\
+&= 2c_1 - 2\alpha c_1 - 2\beta \\
+\implies c_1 &= \beta / (1-\alpha)\\
+\\
+y(x) &= \frac{\beta}{1-\alpha}x \;.
+\end{align*}
+$$ $$
+
+\noindent (d)\,\,$y(0)$ and $y(1)$ are both free.
+
+\begin{align*}
+(y(0) \text{ free}): 0 &= F_{y'}(0,y(0),y'(0)) = 2y'(0) - 2\alpha y(0) - 2\beta \\
+(y(1) \text{ free}): \quad 0 &= F_{y'}(1,y(1),y'(1)) = 2y'(1) - 2\alpha y(1) - 2\beta \\
+\\
+0 &= y'(0) - \alpha y(0) - \beta = c_1 - \alpha c_2 - \beta \\
+0 &= y'(1) - \alpha y(1) - \beta  = c_1 - \alpha (c_1 + c_2) - \beta\\
+\\
+0 &= -\alpha c_2 + \alpha c_1 + \alpha c_2 \implies c_1 = 0 \quad (\text{since } \alpha \neq 0)  \\
+0&= c_1 - \alpha c_2 - \beta = -\alpha c_2 - \beta \implies c_2 = - \beta / \alpha \\
+\\
+y(x) &= -\frac{\beta}{\alpha} \; .
+\end{align*}
+
+\end{enumerate}
+\end{document}
